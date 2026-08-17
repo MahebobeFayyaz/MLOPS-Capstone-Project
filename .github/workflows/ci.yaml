@@ -39,6 +39,8 @@ jobs:
             echo "CAPSTONE_TEST is available"
           fi
 
+
+
       - name: run pipeline
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
