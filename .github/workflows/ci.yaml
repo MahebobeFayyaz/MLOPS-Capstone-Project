@@ -27,6 +27,18 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      # CHECK SECRET
+      - name: Check DagsHub token
+        env:
+          CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
+        run: |
+          if [ -z "$CAPSTONE_TEST" ]; then
+            echo "CAPSTONE_TEST is NOT available"
+            exit 1
+          else
+            echo "CAPSTONE_TEST is available"
+          fi
+
       - name: run pipeline
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
